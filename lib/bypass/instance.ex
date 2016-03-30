@@ -73,7 +73,7 @@ defmodule Bypass.Instance do
         ", retained_plug: ", inspect(state.retained_plug)
       ]
     end
-    {:noreply, Map.update!(state, :retained_plug, fn nil -> caller_pid end)}
+    {:noreply, Map.update!(state, :retained_plug, fn _ -> caller_pid end)}
   end
 
   defp do_handle_call(:up, _from, %{port: port, ref: ref, socket: nil} = state) do
